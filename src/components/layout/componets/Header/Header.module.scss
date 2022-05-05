@@ -1,0 +1,11 @@
+.wrapper {
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+    height: var(--heightHeader);
+    .container {
+        margin: 0 auto;
+        background: red;
+        width: 100%;
+        max-width: var(--widthContainer);
+        height: 100%;
+    }
+}
