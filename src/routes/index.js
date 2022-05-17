@@ -6,7 +6,7 @@ import { MainLayout, UpdateLayout } from '~/components/layout/';
 
 export const publicRoutes = [
     { path: '/', page: Home, layout: MainLayout },
-    { path: 'Following', page: Following, layout: MainLayout },
+    { path: '@:nickname', page: Following, layout: MainLayout },
     { path: 'Update', page: Update, layout: UpdateLayout },
 ];
 

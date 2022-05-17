@@ -1,0 +1,40 @@
+.drop-menu {
+    min-width: 210px;
+    padding: 8px 0px;
+    display: flex;
+    flex-direction: column;
+
+    .drop-item {
+        font-size: 1.6rem;
+        line-height: 22px;
+        font-weight: 600;
+        padding: 10px 12px;
+        border-radius: 0;
+        &:hover,
+        &.active {
+            background: var(--hoverGray);
+        }
+    }
+}
+
+.drop-title {
+    padding: 10px 38px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    line-height: 2.2rem;
+    position: relative;
+    .icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 30px;
+    }
+}
+
+.logout {
+    border-top: 1px solid rgba(0, 0, 0, 0.072);
+}
