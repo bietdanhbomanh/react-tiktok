@@ -92,7 +92,7 @@ function Header() {
                         {user ? (
                             <Image
                                 className={cx('avatar')}
-                                src="https://p16-sign-sg.tiktokcdn.com/aweme/100100/tos-alisg-avt-0068/16dc885acf7fe0e3ba158fdd73e5fadd.jpeg?x-expires=1652670000&x-signature=ETiSVw7aLjkfUiM4pJ8dLj0M%2BM0%3D"
+                                src="https://lh3.googleusercontent.com/-oauOGfRGLBU/YkayObi8ECI/AAAAAAAA6uU/6hJIvhjz_74WHTMNvD7XRFdfiFK60tO1gCNcBGAsYHQ/s0/avatar-anime.jpg"
                                 alt="name"
                                 errorImg={images.noAvatar}
                             />

@@ -6,9 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 
+import * as searchApi from '~/ApiServices/Search';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
+import { useDebounce } from '~/Hook';
 
 const cx = classNames.bind(styles);
 
@@ -18,20 +20,26 @@ function Search() {
     const [showList, setshowList] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const debounce = useDebounce(input, 500);
+
     const inputRef = useRef();
     useEffect(() => {
-        if (input.trim()) {
+        if (debounce.trim()) {
             setLoading(true);
-            fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(input)}&type=less`)
-                .then((res) => res.json())
-                .then((res) => {
-                    setSearchResult(res.data);
+            searchApi.searchLess(
+                debounce,
+                (data) => {
+                    setSearchResult(data);
                     setLoading(false);
-                });
+                },
+                (error) => {
+                    setLoading(false);
+                }
+            );
         } else {
             setSearchResult([]);
         }
-    }, [input]);
+    }, [debounce]);
 
     function handleBlur() {
         setshowList(false);
