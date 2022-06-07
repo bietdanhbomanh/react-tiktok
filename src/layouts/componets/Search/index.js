@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 
-import * as searchApi from '~/ApiServices/Search';
+import * as searchApi from '~/apiServices/Search';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
@@ -34,6 +34,7 @@ function Search() {
                 },
                 (error) => {
                     setLoading(false);
+                    console.log(error);
                 }
             );
         } else {
@@ -45,9 +46,17 @@ function Search() {
         setshowList(false);
     }
 
+    function handleInput(e) {
+        const value = e.target.value;
+        if (!value.startsWith(' ')) {
+            setInput(value);
+        }
+    }
+
     return (
         <div>
             <Tippy
+                offset={[0, 8]}
                 onClickOutside={handleBlur}
                 interactive
                 visible={input && showList && searchResult.length > 0}
@@ -68,7 +77,7 @@ function Search() {
                         value={input}
                         placeholder="Search accounts and videos"
                         spellCheck={false}
-                        onInput={(e) => setInput(e.target.value)}
+                        onInput={handleInput}
                         onFocus={() => setshowList(true)}
                     />
                     {input && !loading && (
@@ -82,7 +91,9 @@ function Search() {
                         />
                     )}
                     {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-                    <button className={cx('search-btn')}>{<SearchIcon />}</button>
+                    <button onMouseDown={(e) => e.preventDefault()} className={cx('search-btn')}>
+                        {<SearchIcon />}
+                    </button>
                 </div>
             </Tippy>
         </div>

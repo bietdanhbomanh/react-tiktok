@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
@@ -19,6 +20,7 @@ import { DropMenu } from '~/components/Menu';
 import { FlyIcon, MessageIcon, UpdateIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
+import { ROUTES } from '~/config';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -40,6 +42,7 @@ const MENU_ITEMS = [
                         ],
                     },
                 },
+                { label: 'Tiếng anh', code: 'vi' },
             ],
         },
     },
@@ -61,7 +64,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('container')}>
-                <Logo />
+                <Link to={ROUTES.home}>
+                    <Logo />
+                </Link>
 
                 <Search />
 
@@ -69,17 +74,23 @@ function Header() {
                     {user ? (
                         <>
                             <Tip content="Update Video" placement="bottom">
-                                <Button iconLeft={<UpdateIcon width={28} height={28} />} />
+                                <div>
+                                    <Button iconLeft={<UpdateIcon width={28} height={28} />} />
+                                </div>
                             </Tip>
                             <Tip content="Inbox" placement="bottom">
-                                <Button
-                                    children={<span className={cx('count')}>99+</span>}
-                                    className={cx('message')}
-                                    iconLeft={<MessageIcon width={28} height={28} />}
-                                />
+                                <div>
+                                    <Button
+                                        children={<span className={cx('count')}>99+</span>}
+                                        className={cx('message')}
+                                        iconLeft={<MessageIcon width={28} height={28} />}
+                                    />
+                                </div>
                             </Tip>
                             <Tip content="Thông báo" placement="bottom">
-                                <Button iconLeft={<FlyIcon width={28} height={28} />} />
+                                <div>
+                                    <Button iconLeft={<FlyIcon width={28} height={28} />} />
+                                </div>
                             </Tip>
                         </>
                     ) : (

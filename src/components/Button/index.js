@@ -1,29 +1,26 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
-import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-function Button(
-    {
-        to,
-        href,
-        onClick,
-        iconLeft,
-        iconRight,
-        size,
-        rouded,
-        border,
-        className,
-        disable,
-        text,
-        primary,
-        children,
-        ...other
-    },
-    ref
-) {
+function Button({
+    to,
+    href,
+    onClick,
+    iconLeft,
+    iconRight,
+    size,
+    rouded,
+    border,
+    className,
+    disable,
+    text,
+    primary,
+    children,
+    ...other
+}) {
     let Type = 'button';
     const props = {
         onClick,
@@ -52,11 +49,7 @@ function Button(
     }
 
     return (
-        <Type
-            ref={ref}
-            className={cx('wrapper', size, className, { primary, border, rouded, text, disable })}
-            {...props}
-        >
+        <Type className={cx('wrapper', size, className, { primary, border, rouded, text, disable })} {...props}>
             {iconLeft && <span className={cx('icon')}>{iconLeft}</span>}
             {typeof children === 'string' ? <span className={cx('title')}>{children}</span> : children}
             {iconRight && <span className={cx('icon')}>{iconRight}</span>}
@@ -64,4 +57,20 @@ function Button(
     );
 }
 
-export default forwardRef(Button);
+Button.propTypes = {
+    to: PropTypes.string,
+    href: PropTypes.string,
+    onClick: PropTypes.func,
+    iconLeft: PropTypes.node,
+    iconRight: PropTypes.node,
+    size: PropTypes.string,
+    rouded: PropTypes.string,
+    border: PropTypes.string,
+    className: PropTypes.string,
+    disable: PropTypes.string,
+    text: PropTypes.string,
+    primary: PropTypes.string,
+    children: PropTypes.node,
+};
+
+export default Button;

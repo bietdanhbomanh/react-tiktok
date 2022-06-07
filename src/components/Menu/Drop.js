@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 
 import styles from './Menu.module.scss';
 import Tippy from '@tippyjs/react/headless';
@@ -41,10 +42,11 @@ function Drop({ children, items }) {
     return (
         <Tippy
             onHidden={resetMenu}
+            hideOnClick={false}
             interactive
             placement="bottom-end"
             delay={[0, 700]}
-            offset={[12, 0]}
+            offset={[12, 12]}
             render={(attrs) => (
                 <PopperWrapper>
                     <div className={cx('drop-menu')}>
@@ -56,14 +58,19 @@ function Drop({ children, items }) {
                                 <span>{current[current.length - 1].label}</span>
                             </div>
                         )}
-                        {renderMenu()}
+                        <div className={cx('wrap-list')}>{renderMenu()}</div>
                     </div>
                 </PopperWrapper>
             )}
         >
-            <div>{children}</div>
+            <div className={cx('wrap-avatar')}>{children}</div>
         </Tippy>
     );
 }
+
+Drop.propTypes = {
+    children: PropTypes.node.isRequired,
+    items: PropTypes.array.isRequired,
+};
 
 export default Drop;
