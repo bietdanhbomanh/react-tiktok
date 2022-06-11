@@ -1,6 +1,6 @@
-import Home from '~/components/pages/Home';
-import Following from '~/components/pages/Following';
-import Update from '~/components/pages/Update';
+import Home from '~/pages/Home';
+import Following from '~/pages/Following';
+import Update from '~/pages/Update';
 import { ROUTES } from '~/config';
 
 import { MainLayout, UpdateLayout } from '~/layouts';

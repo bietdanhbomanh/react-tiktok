@@ -14,7 +14,7 @@ const cx = classNames.bind(styles);
 function Drop({ children, items }) {
     const [current, setCurrent] = useState([{ menu: { data: items } }]);
 
-    function renderMenu() {
+    function renderItemMenu() {
         return current[current.length - 1].menu.data.map((item, index) => (
             <Button
                 onClick={() => {
@@ -58,7 +58,7 @@ function Drop({ children, items }) {
                                 <span>{current[current.length - 1].label}</span>
                             </div>
                         )}
-                        <div className={cx('wrap-list')}>{renderMenu()}</div>
+                        <div className={cx('wrap-list')}>{renderItemMenu()}</div>
                     </div>
                 </PopperWrapper>
             )}

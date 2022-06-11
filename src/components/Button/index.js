@@ -29,7 +29,6 @@ function Button({
 
     if (disable) {
         Object.keys(props).forEach((key) => {
-            console.log(key.startsWith('on'));
             if (
                 key.startsWith('on') ||
                 key.startsWith('to') ||
@@ -64,12 +63,12 @@ Button.propTypes = {
     iconLeft: PropTypes.node,
     iconRight: PropTypes.node,
     size: PropTypes.string,
-    rouded: PropTypes.string,
-    border: PropTypes.string,
+    rouded: PropTypes.bool,
+    border: PropTypes.bool,
     className: PropTypes.string,
-    disable: PropTypes.string,
-    text: PropTypes.string,
-    primary: PropTypes.string,
+    disable: PropTypes.bool,
+    text: PropTypes.bool,
+    primary: PropTypes.bool,
     children: PropTypes.node,
 };
 

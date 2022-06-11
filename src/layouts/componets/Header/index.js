@@ -27,6 +27,7 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faLanguage} />,
         label: 'Ngôn ngữ',
+        class: 'test',
         menu: {
             label: 'Ngôn ngữ',
             data: [
@@ -60,7 +61,7 @@ const USER_MENU = [
 function Header() {
     const Logo = images.logo;
 
-    const user = true;
+    const user = false;
     return (
         <header className={cx('wrapper')}>
             <div className={cx('container')}>
