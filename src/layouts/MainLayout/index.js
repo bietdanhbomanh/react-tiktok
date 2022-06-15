@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import Header from '../componets/Header';
-import Sidebar from './Sidebar';
+import Sidebar from '../componets/Sidebar';
 
 import classNames from 'classnames/bind';
 import styles from './MainLayout.module.scss';

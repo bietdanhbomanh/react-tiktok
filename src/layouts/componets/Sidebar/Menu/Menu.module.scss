@@ -1,0 +1,21 @@
+.wrapper {
+    .menu-item {
+        &.active {
+            color: var(--primary);
+        }
+        color: var(--text-color);
+
+        padding: 8px;
+        width: 100%;
+        border-radius: 4px;
+        font-size: 18px;
+        font-weight: 600;
+        transition: background-color 0.1s ease-in-out;
+        &:hover {
+            background: var(--hoverGray);
+        }
+        .icon {
+            font-size: 24px;
+        }
+    }
+}

@@ -29,14 +29,12 @@ const MENU_ITEMS = [
         label: 'Ngôn ngữ',
         class: 'test',
         menu: {
-            label: 'Ngôn ngữ',
             data: [
                 { label: 'Tiếng anh', code: 'vi' },
                 {
                     label: 'Tiếng việt',
                     code: 'en',
                     menu: {
-                        label: 'Địa Phương',
                         data: [
                             { label: 'Nam', code: 'vi' },
                             { label: 'Bắc', code: 'en' },
@@ -65,7 +63,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('container')}>
-                <Link to={ROUTES.home}>
+                <Link className={cx('logo-link')} to={ROUTES.home}>
                     <Logo />
                 </Link>
 

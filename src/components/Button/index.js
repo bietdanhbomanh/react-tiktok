@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -19,6 +19,10 @@ function Button({
     text,
     primary,
     children,
+    classForIcon,
+    classForText,
+    navlink,
+    navActiveClass,
     ...other
 }) {
     let Type = 'button';
@@ -41,17 +45,39 @@ function Button({
 
     if (to) {
         props.to = to;
-        Type = Link;
+        if (navlink) {
+            Type = NavLink;
+        } else {
+            Type = Link;
+        }
     } else if (href) {
         props.href = href;
         Type = 'a';
     }
 
+    const renderClassName = (nav) => {
+        if (navlink) {
+            return cx('wrapper', size, className, {
+                primary,
+                border,
+                rouded,
+                text,
+                disable,
+                [navActiveClass]: nav.isActive,
+            });
+        }
+    };
+
     return (
-        <Type className={cx('wrapper', size, className, { primary, border, rouded, text, disable })} {...props}>
-            {iconLeft && <span className={cx('icon')}>{iconLeft}</span>}
-            {typeof children === 'string' ? <span className={cx('title')}>{children}</span> : children}
-            {iconRight && <span className={cx('icon')}>{iconRight}</span>}
+        <Type
+            className={
+                navlink ? renderClassName : cx('wrapper', size, className, { primary, border, rouded, text, disable })
+            }
+            {...props}
+        >
+            {iconLeft && <span className={cx('icon', classForIcon)}>{iconLeft}</span>}
+            {typeof children === 'string' ? <span className={cx('title', classForText)}>{children}</span> : children}
+            {iconRight && <span className={cx('icon', classForIcon)}>{iconRight}</span>}
         </Type>
     );
 }
@@ -66,8 +92,12 @@ Button.propTypes = {
     rouded: PropTypes.bool,
     border: PropTypes.bool,
     className: PropTypes.string,
+    classForIcon: PropTypes.string,
+    classForText: PropTypes.string,
     disable: PropTypes.bool,
     text: PropTypes.bool,
+    navlink: PropTypes.bool,
+    navActiveClass: PropTypes.string,
     primary: PropTypes.bool,
     children: PropTypes.node,
 };
