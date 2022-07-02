@@ -8,7 +8,7 @@ import Tippy from '@tippyjs/react/headless';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
-import * as searchApi from '~/apiServices/Search';
+import * as searchApi from '~/services/Search';
 import { SearchIcon } from '~/components/Icons';
 import { useDebounce } from '~/Hook';
 
