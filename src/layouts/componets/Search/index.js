@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 
-import * as searchApi from '~/apiServices/Search';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
+import * as searchApi from '~/apiServices/Search';
 import { SearchIcon } from '~/components/Icons';
 import { useDebounce } from '~/Hook';
 
